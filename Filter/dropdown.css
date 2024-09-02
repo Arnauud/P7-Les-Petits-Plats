@@ -1,0 +1,154 @@
+.filter {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #EDEDED;
+  padding: 10px 10px 10px 110px;
+  z-index: 3;
+  position: relative;
+  top: -20px;
+  gap: 40px;
+}
+
+.btn, .btn-secondary {
+    width: 195px;
+    height: 56px;
+    padding: 17px 16px 17px 16px;
+    border-radius: 11px;
+    color: black;
+    background-color: white;
+    border: none;
+  }
+
+  .dropdown-menu, .show {
+    width: 195px;
+    max-height: 315px;
+    overflow-y: auto;
+    /* display: block; */
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+/* 
+.dropdown-menu, .show li {
+    display: block;
+    padding: 8px 16px;
+} */
+
+/************** Arrow Up and Arrow Down manipulation- ********************/
+
+.btn.show i.fa-angle-up {
+    display: inline;
+}
+
+.btn i {
+    transition: transform 0.3s ease-out;
+}
+
+.btn.show i.fa-angle-down {
+    transform: rotate(180deg);
+}
+
+/*************************************************************************/
+
+
+  .dropdown-search {
+    width: 163px;
+    height: 36px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    position: relative;
+    top: 1px;
+    left: 11px;
+  }
+
+.search, .fa-magnifying-glass {
+  position: absolute;
+    top: 13px;
+    right: 8px;
+    color: grey;
+    z-index: 1;
+  }
+
+  .input-wrapper{
+    height: 36px;
+    width: 160px;
+  }
+    
+  .dropdown-item:hover{
+    background-color: #FFD15B;
+  }
+  
+  .recipeCounter {
+    position: relative;
+    top: 5px;
+    left: 640px;
+    font-size: 21px;
+    font-family: initial;
+  }
+
+
+/* Styles for each selected item */
+  .selected-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  
+}
+
+
+/* Default styles */
+
+.remove-tag-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+button {
+  border-radius: 10px;
+  background: #FFD15B;
+  display: inline;
+  padding: 10px;
+  height: 53px;
+}
+
+/* Hover effects */
+button:hover .selected-tag-item, 
+button:hover .remove-tag-button, 
+button:hover .selected-tag-item .remove-tag-button, 
+button:hover .remove-tag-button .selected-tag-item {
+  background-color: #FFD15B;
+  font-weight: 700;
+}
+
+button:hover .selected-tag-item {
+  padding-top: 13px;
+}
+
+button:hover .remove-tag-button {
+  background-color: black;
+  border-radius: 20px;
+  color: #FFD15B;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.clear-button {
+  display: none;
+}
+
+.clear-button.show {
+  display: inline;
+  margin: 5px;
+  width: 16px;
+  background: transparent;
+  border: transparent;
+  color: grey;
+  position: relative;
+  bottom: 34px;
+  left: 128px;
+}
