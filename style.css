@@ -1,0 +1,110 @@
+@import './RecipeCard/recipeCard.css';
+@import './Filter/dropdown.css';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #EDEDED;
+}
+
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: #0000004d;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
+}
+
+.logo {
+  position: absolute;
+  top: 65px;
+  left: 80px;
+  width: 243.35px;
+  height: 43.26px;
+}
+
+.text-center {
+  text-align: center;
+  margin: 0 20px;
+  color: #ffd15b;
+  width: 890px;
+  font-family: Anton; /* Need to add this font */
+  font-size: 44px;
+  font-weight: 400;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-bar input[type="text"] {
+  width: 954px;
+  height: 72px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 11px;
+  box-sizing: border-box;
+}
+
+.search-bar i {
+  position: relative;
+  left: 439px;
+  top: -33%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
+  transition: all 300ms ease-out;
+  background: black;
+  border-radius: 10px;
+  opacity: 1;
+  width: 51px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar i:hover {
+  background: #ffd15b;
+  color: white;
+}
+/* .search-bar input[type="submit"] {
+    width: 100px; 
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+} */
+
