@@ -1,25 +1,21 @@
 import { recipes } from "./assets/data/recipes.js";
 import { initializeDropdowns } from "./Filter/dropDown.js";
 import { displayRecipes } from "./RecipeCard/displayRecipe.js";
-import { mainSearchRecipes } from "./mainSearch.js";
-import { updateSelectedItemsLog } from "./iteration/itemHandlerProcessing.js";
+import { mainSearchRecipes, filterRecipes } from "./mainSearch.js";
 
 displayRecipes(recipes);
 initializeDropdowns(recipes);
-updateSelectedItemsLog(recipes);
 
 document.getElementById("searchButton").addEventListener("click", () => {
   recipes = mainLaunch();
-  
 });
 
 document.getElementById("research").addEventListener("input", () => {
   const recipes = mainLaunch();
-
 });
 
 // Define the function to set up dropdown handlers
-function setupDropdownHandlers() {
+export function setupDropdownHandlers() {
   var tags = document.getElementsByClassName("dropdown-item");
   console.log("Number of tags:", tags.length);
 
@@ -32,7 +28,6 @@ function setupDropdownHandlers() {
     });
   }
 }
-
 
 // construire un tableau avec les tags selectionnes + ceux qui viennent etre clickés ! DONE
 function tagHandler(tag) {
@@ -66,42 +61,21 @@ function tagHandler(tag) {
   filterRecipes();
 }
 // chercher si des tags sont deja selectionnés ! DONE !
-function previousTagCheck() {
+export function previousTagCheck() {
   var selectedTags = document.querySelectorAll(".selected-tag-item"); // Assuming each tag has the class 'tag'
   var tagCount = selectedTags.length; // Count the number of tags
   console.log("Number of active selected tags:", tagCount);
-  console.log(selectedTags)
+  console.log(selectedTags);
   if (tagCount > 0) {
     console.log("Previously selected tags:", selectedTags);
+    return selectedTags;
     // To do: function to update the displayed recipes with the active tags
   } else {
     console.log("There are no tags to select from");
   }
 }
-// lancer la fonction filterRecipes avec parametre (tableau de tags + Recipes){}
 
-function filterRecipes() {
-  var selectedTags = Array.from(document.querySelectorAll(".selected-tag-item")).map((tag) => tag.textContent.toLowerCase());
-  console.log(selectedTags);
-  var filteredRecipes = recipes.filter((recipe) => {
-    return selectedTags.every((tag) => {
-      const ingredientMatch = recipe.ingredients.some((ing) =>
-        ing.ingredient.toLowerCase().includes(tag)
-      );
-      const applianceMatch = recipe.appliance.toLowerCase().includes(tag);
-      const utensilMatch = recipe.ustensils.some((ut) =>
-        ut.toLowerCase().includes(tag)
-      );
 
-      return ingredientMatch || applianceMatch || utensilMatch;
-    });
-  });
-  console.log("Filtered Recipes:", filteredRecipes);
-  displayRecipes(filteredRecipes);
-  previousTagCheck(filteredRecipes)
-  initializeDropdowns(filteredRecipes) /// build a comparaison function to adjust a given parameter here.
-  setupDropdownHandlers(filteredRecipes)
-}
 
 function mainLaunch() {
   console.log("MAINLAUCH");
@@ -113,14 +87,13 @@ function mainLaunch() {
     const searchResults = mainSearchRecipes(searchTerm, recipes);
     console.log("Search results:", searchResults);
     displayRecipes(searchResults);
-    previousTagCheck(searchResults)
-    initializeDropdowns(searchResults)
-    setupDropdownHandlers(searchResults)
+    previousTagCheck(searchResults);
+    initializeDropdowns(searchResults);
+    setupDropdownHandlers(searchResults);
   }
 }
 
-
 // Call this function when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-  setupDropdownHandlers();  // Call the reusable function
+  setupDropdownHandlers(); // Call the reusable function
 });

@@ -8,11 +8,11 @@ export function displayRecipes(recipes) {
     const recipeCounter = document.querySelector('.recipeCounter');
     // console.log('Recipe counter element found:', recipeCounter);
 
-    if (!recipes || recipes.length === 0) {
-        // console.log('No recipes found, exiting displayRecipes function.');
-        recipeCounter.textContent = "0 RECETTES";
-        return;
-    }
+    // if (!recipes || recipes.length === 0) {
+    //     // console.log('No recipes found, exiting displayRecipes function.');
+    //     recipeCounter.textContent = `Aucune recette ne contient "${main}". Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
+    //     return;
+    // }
 
     console.log('Number of recipes to display:', recipes.length);
 
@@ -50,6 +50,11 @@ export function displayRecipes(recipes) {
         main.appendChild(row);
     }
 
-    recipeCounter.textContent = `${recipes.length} RECETTE${recipes.length > 1 ? 'S' : ''}`;
+    if (recipes.length > 0) {
+        recipeCounter.textContent = `${recipes.length} RECETTE${recipes.length > 1 ? 'S' : ''}`;
+    } else {
+        const userInput = recipes.value; // to do : need to find a way to have the userInput in the corrected field.
+        recipeCounter.textContent = `Aucune recette ne contient "${userInput}". Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
+    }
     console.log(`Updated recipe counter text: ${recipeCounter.textContent}`);
 }

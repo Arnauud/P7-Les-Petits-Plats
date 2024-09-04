@@ -147,3 +147,11 @@ export function extractUniqueItems(recipes) {
         allUtensils: removeDuplicates(allUtensils)
     };
 }
+
+////////////////////////////////////////////////////////////
+// Function to Update Dropdown Menu list
+////////////////////////////////////////////////////////////
+
+function updateDropdown (){
+
+}; 
