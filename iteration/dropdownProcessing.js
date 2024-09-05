@@ -60,14 +60,24 @@ export function createDropdownItems(items, dropdownMenu, recipes) {
 
     const formattedItems = formatItems(sortedItems);
     console.log(`THIS IS ANOTHER BEEEEEP`, formattedItems);
+    var selectedTags = document.querySelectorAll(".selected-tag-item");
 
     formattedItems.forEach(item => {
+        var check = false
+        selectedTags.forEach(tag => {
+            console.log(item,tag.textContent)
+            if(item === tag.textContent){
+                check = true
+            }
+        })
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.classList.add("dropdown-item");
         a.textContent = item;
         li.appendChild(a);
-        dropdownMenu.appendChild(li);
+        if (check === false){
+            dropdownMenu.appendChild(li);
+        }
     });
 
     if (searchField) {

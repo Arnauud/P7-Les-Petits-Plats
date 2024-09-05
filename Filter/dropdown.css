@@ -1,12 +1,21 @@
+@import "bootstrap";
+
 .filter {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   background-color: #EDEDED;
-  padding: 10px 10px 10px 110px;
+  padding: 10px 81px 10px 81px;
   z-index: 3;
   position: relative;
   top: -20px;
-  gap: 40px;
+  gap: 78px;
+}
+
+.recipeCounter {
+  margin-left: auto;
+  font-size: 21px;
+  font-family: initial;
 }
 
 .btn, .btn-secondary {
@@ -17,13 +26,14 @@
     color: black;
     background-color: white;
     border: none;
+    display: flex;
+    justify-content: space-between;
   }
 
-  .dropdown-menu, .show {
+  .dropdown-menu.show {
     width: 195px;
     max-height: 315px;
     overflow-y: auto;
-    /* display: block; */
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -52,7 +62,7 @@
 
 
   .dropdown-search {
-    width: 163px;
+    width: 167px;
     height: 36px;
     padding: 8px;
     border-radius: 4px;
@@ -79,28 +89,23 @@
     background-color: #FFD15B;
   }
   
-  .recipeCounter {
-    position: relative;
-    top: 5px;
-    left: 640px;
-    font-size: 21px;
-    font-family: initial;
-  }
+
 
 
 /* Styles for each selected item */
-  .selected-items-container {
+  .selected-tags-container a{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-  
+    text-decoration: none;
+    color: black;
 }
 
 
 /* Default styles */
 
 .remove-tag-button {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
@@ -110,22 +115,24 @@
 button {
   border-radius: 10px;
   background: #FFD15B;
-  display: inline;
+  display: flex;
   padding: 10px;
   height: 53px;
+  width: 203px;
+  border: none;
+  align-items: center;
+  justify-content: space-around;
+  
 }
 
 /* Hover effects */
 button:hover .selected-tag-item, 
 button:hover .remove-tag-button, 
 button:hover .selected-tag-item .remove-tag-button, 
-button:hover .remove-tag-button .selected-tag-item {
+button:hover .remove-tag-button .selected-tag-item a{
   background-color: #FFD15B;
   font-weight: 700;
-}
-
-button:hover .selected-tag-item {
-  padding-top: 13px;
+  text-decoration: none;
 }
 
 button:hover .remove-tag-button {
@@ -143,12 +150,21 @@ button:hover .remove-tag-button {
 
 .clear-button.show {
   display: inline;
-  margin: 5px;
-  width: 16px;
+  width: 0px;
   background: transparent;
   border: transparent;
   color: grey;
   position: relative;
-  bottom: 34px;
+  bottom: 45px;
   left: 128px;
+}
+.selected-tags-container{
+  display: flex;
+  gap: 20px;
+  margin-left: 20px;
+  margin-top: -30px;
+}
+
+.mt-4 {
+  margin-top: 0;
 }

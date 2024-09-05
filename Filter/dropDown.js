@@ -57,14 +57,14 @@ export function initializeDropdowns(recipes) {
         if (applianceSearchInput) {
             applianceSearchInput.addEventListener('input', function() {
                 // console.log('Appliance search input changed');
-                displayRecipes(applianceSearchInput, applianceItems, applianceDropdown);
+                displayRecipes(recipes, applianceItems);
             });
         }
 
         if (utensilSearchInput) {
             utensilSearchInput.addEventListener('input', function() {
                 // console.log('Utensil search input changed');
-                displayRecipes(utensilSearchInput, utensilItems, utensilDropdown);
+                displayRecipes(recipes, utensilItems);
             });
         }
     // });

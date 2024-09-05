@@ -6,31 +6,47 @@ import { mainSearchRecipes, filterRecipes } from "./mainSearch.js";
 displayRecipes(recipes);
 initializeDropdowns(recipes);
 
+let newRecipes = [];
+
 document.getElementById("searchButton").addEventListener("click", () => {
   recipes = mainLaunch();
 });
 
 document.getElementById("research").addEventListener("input", () => {
-  const recipes = mainLaunch();
+  newRecipes = mainLaunch();
 });
+
+
 
 // Define the function to set up dropdown handlers
 export function setupDropdownHandlers() {
   var tags = document.getElementsByClassName("dropdown-item");
   console.log("Number of tags:", tags.length);
+  let mainRecipe = []
+  if (newRecipes.length === 0){
+    mainRecipe = recipes
+  } else {
+    mainRecipe = newRecipes
+  }
 
   for (let i = 0; i < tags.length; i++) {
     let tag = tags[i];
     tag.addEventListener("click", function () {
       tagHandler(tag);
       previousTagCheck();
-      filterRecipes();
+      filterRecipes(mainRecipe);
     });
   }
 }
 
 // construire un tableau avec les tags selectionnes + ceux qui viennent etre clickés ! DONE
 function tagHandler(tag) {
+  let mainRecipe = []
+  if (newRecipes.length === 0){
+    mainRecipe = recipes
+  } else {
+    mainRecipe = newRecipes
+  }
   var selectedTagContainer = document.getElementById("tag");
   var tagButton = document.createElement("button");
   var tagElement = document.createElement("a");
@@ -48,6 +64,7 @@ function tagHandler(tag) {
 
   // Remove the tag from the dropdown list
   tag.classList.remove("dropdown-item");
+  console.log(`this is the tag`,tag)
   tag.style.display = "none"; // Hide the original tag from the dropdown
 
   // Event listener to remove the tag and add it back to the dropdown
@@ -56,9 +73,9 @@ function tagHandler(tag) {
     selectedTagContainer.removeChild(tagButton);
     tag.classList.add("dropdown-item");
     tag.style.display = "block"; // Show the tag back in the dropdown list
-    filterRecipes();
+    filterRecipes(mainRecipe);
   });
-  filterRecipes();
+  filterRecipes(mainRecipe);
 }
 // chercher si des tags sont deja selectionnés ! DONE !
 export function previousTagCheck() {
@@ -90,7 +107,9 @@ function mainLaunch() {
     previousTagCheck(searchResults);
     initializeDropdowns(searchResults);
     setupDropdownHandlers(searchResults);
+    return searchResults
   }
+  return recipes
 }
 
 // Call this function when the DOM is fully loaded
