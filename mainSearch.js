@@ -1,23 +1,11 @@
+// JS BEN.CH //
+// https://jsben.ch/OGtyE
+
 // import { recipes } from "./assets/data/recipes.js";
 import { initializeDropdowns } from "./Filter/dropDown.js";
 import { displayRecipes } from "./RecipeCard/displayRecipe.js";
 import { previousTagCheck, setupDropdownHandlers } from "./main.js"
 
-// export function mainSearchRecipes(query, recipes) {
-//     console.log('searchRecipes called with:', { query, recipes });
-//     // Ensure the query is a string
-    
-//     query = query.toLowerCase();
-//     console.log('Converted query to lowercase:', query);
-
-//     return recipes.filter(recipe => {
-//         const nameMatch = recipe.name.toLowerCase().includes(query);
-//         const ingredientMatch = recipe.ingredients.some(ing => ing.ingredient.toLowerCase().includes(query));
-//         const descriptionMatch = recipe.description.toLowerCase().includes(query);
-
-//         return nameMatch || ingredientMatch || descriptionMatch;
-//     });
-// }
 
 
 // export function mainSearchRecipes(query, recipes) {
@@ -83,31 +71,92 @@ import { previousTagCheck, setupDropdownHandlers } from "./main.js"
 // }
 
 
+// export function mainSearchRecipes(query, recipes) {
+//   console.log('searchRecipes called with:', { query, recipes });
+
+//     // Ensure the query is a string
+//     query = query.toLowerCase();
+//     console.log('Converted query to lowercase:', query);
+
+//     // Initialize an array to hold the matching recipes
+//     let matchingRecipes = [];
+
+//     // Iterate through the recipes array
+//     for (let i = 0; i < recipes.length; i++) {
+//         const recipe = recipes[i];
+        
+//         const nameMatch = recipe.name.toLowerCase().indexOf(query) !== -1;
+//         const ingredientMatch = recipe.ingredients.some(ing => ing.ingredient.toLowerCase().indexOf(query) !== -1);
+//         const descriptionMatch = recipe.description.toLowerCase().indexOf(query) !== -1;
+
+//         // If any of the conditions match, add the recipe to the matchingRecipes array
+//         if (nameMatch || ingredientMatch || descriptionMatch) {
+//             matchingRecipes.push(recipe);
+//         }
+//     }
+
+//     return matchingRecipes;
+// }
+
+// export function mainSearchRecipes(query, recipes) {
+//   console.log('searchRecipes called with:', { query, recipes });
+
+//   // Ensure the query is a string and convert it to lowercase
+//   query = query.toLowerCase();
+//   console.log('Converted query to lowercase:', query);
+
+//   // Use the .filter() method to find all matching recipes
+//   const matchingRecipes = recipes.filter(recipe => {
+//       const nameMatch = recipe.name.toLowerCase().indexOf(query) !== -1;
+//       const descriptionMatch = recipe.description.toLowerCase().indexOf(query) !== -1;
+
+//       // Use .some() to check if any ingredient matches the query
+//       const ingredientMatch = recipe.ingredients.some(ing => 
+//           ing.ingredient.toLowerCase().indexOf(query) !== -1
+//       );
+
+//       // Return true if any match is found (name, description, or ingredient)
+//       return nameMatch || ingredientMatch || descriptionMatch;
+//   });
+
+//   return matchingRecipes;
+// }
+
 export function mainSearchRecipes(query, recipes) {
   console.log('searchRecipes called with:', { query, recipes });
 
-    // Ensure the query is a string
-    query = query.toLowerCase();
-    console.log('Converted query to lowercase:', query);
+  // Ensure the query is a string and convert it to lowercase
+  query = query.toLowerCase();
+  console.log('Converted query to lowercase:', query);
 
-    // Initialize an array to hold the matching recipes
-    let matchingRecipes = [];
+  // Initialize an array to hold the matching recipes
+  let matchingRecipes = [];
 
-    // Iterate through the recipes array
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
-        
-        const nameMatch = recipe.name.toLowerCase().indexOf(query) !== -1;
-        const ingredientMatch = recipe.ingredients.some(ing => ing.ingredient.toLowerCase().indexOf(query) !== -1);
-        const descriptionMatch = recipe.description.toLowerCase().indexOf(query) !== -1;
+  // Iterate through the recipes array
+  for (let i = 0; i < recipes.length; i++) {
+      const recipe = recipes[i];
+      
+      // Convert recipe name and description to lowercase for comparison
+      const nameMatch = recipe.name.toLowerCase().indexOf(query) !== -1;
+      const descriptionMatch = recipe.description.toLowerCase().indexOf(query) !== -1;
 
-        // If any of the conditions match, add the recipe to the matchingRecipes array
-        if (nameMatch || ingredientMatch || descriptionMatch) {
-            matchingRecipes.push(recipe);
-        }
-    }
+      // Check if any ingredients match the query
+      let ingredientMatch = false;
+      for (let j = 0; j < recipe.ingredients.length; j++) {
+          const ingredient = recipe.ingredients[j].ingredient.toLowerCase();
+          if (ingredient.indexOf(query) !== -1) {
+              ingredientMatch = true;
+              break;
+          }
+      }
 
-    return matchingRecipes;
+      // If any of the conditions match, add the recipe to the matchingRecipes array
+      if (nameMatch || ingredientMatch || descriptionMatch) {
+          matchingRecipes.push(recipe);
+      }
+  }
+
+  return matchingRecipes;
 }
 
 

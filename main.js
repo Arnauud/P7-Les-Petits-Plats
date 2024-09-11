@@ -9,7 +9,7 @@ initializeDropdowns(recipes);
 let newRecipes = [];
 
 document.getElementById("searchButton").addEventListener("click", () => {
-  recipes = mainLaunch();
+  newRecipes = mainLaunch();
 });
 
 document.getElementById("research").addEventListener("input", () => {
