@@ -12,32 +12,19 @@ export function mainSearchRecipes(query, recipes) {
   query = query.toLowerCase();
   console.log('Converted query to lowercase:', query);
 
-  // Initialize an array to hold the matching recipes
-  let matchingRecipes = [];
-
-  // Iterate through the recipes array
-  for (let i = 0; i < recipes.length; i++) {
-      const recipe = recipes[i];
-      
-      // Convert recipe name and description to lowercase for comparison
+  // Use the .filter() method to find all matching recipes
+  const matchingRecipes = recipes.filter(recipe => {
       const nameMatch = recipe.name.toLowerCase().indexOf(query) !== -1;
       const descriptionMatch = recipe.description.toLowerCase().indexOf(query) !== -1;
 
-      // Check if any ingredients match the query
-      let ingredientMatch = false;
-      for (let j = 0; j < recipe.ingredients.length; j++) {
-          const ingredient = recipe.ingredients[j].ingredient.toLowerCase();
-          if (ingredient.indexOf(query) !== -1) {
-              ingredientMatch = true;
-              break;
-          }
-      }
+      // Use .some() to check if any ingredient matches the query
+      const ingredientMatch = recipe.ingredients.some(ing => 
+          ing.ingredient.toLowerCase().indexOf(query) !== -1
+      );
 
-      // If any of the conditions match, add the recipe to the matchingRecipes array
-      if (nameMatch || ingredientMatch || descriptionMatch) {
-          matchingRecipes.push(recipe);
-      }
-  }
+      // Return true if any match is found (name, description, or ingredient)
+      return nameMatch || ingredientMatch || descriptionMatch;
+  });
 
   return matchingRecipes;
 }
