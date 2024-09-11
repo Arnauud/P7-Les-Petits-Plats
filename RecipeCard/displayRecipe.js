@@ -52,9 +52,10 @@ export function displayRecipes(recipes) {
 
     if (recipes.length > 0) {
         recipeCounter.textContent = `${recipes.length} RECETTE${recipes.length > 1 ? 'S' : ''}`;
-    } else {
-        const userInput = recipes.value; // to do : need to find a way to have the userInput in the corrected field.
-        recipeCounter.textContent = `Aucune recette ne contient "${userInput}". Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
-    }
+    } 
+    // else {
+    //     const userInput = recipes.value; // to do : need to find a way to have the userInput in the corrected field.
+    //     recipeCounter.textContent = `Aucune recette ne contient "${userInput}". Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
+    // }
     console.log(`Updated recipe counter text: ${recipeCounter.textContent}`);
 }

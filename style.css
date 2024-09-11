@@ -68,6 +68,8 @@ html {
   margin-top: 20px;
 }
 
+
+
 .search-bar input[type="text"] {
   width: 954px;
   height: 72px;
@@ -75,6 +77,10 @@ html {
   margin-bottom: 10px;
   border-radius: 11px;
   box-sizing: border-box;
+}
+
+.subSearchText{
+  color:white;
 }
 
 .search-bar i {
@@ -99,12 +105,4 @@ html {
   background: #ffd15b;
   color: white;
 }
-/* .search-bar input[type="submit"] {
-    width: 100px; 
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-} */
 

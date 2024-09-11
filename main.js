@@ -97,19 +97,32 @@ export function previousTagCheck() {
 function mainLaunch() {
   console.log("MAINLAUCH");
   const searchTerm = document.getElementById("research").value;
+  const errorMessage = `Aucune recette ne contient "${searchTerm}". Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
+  const errorHandler = document.querySelector(".search-bar");
+  const displayNoRecipe = document.querySelector(".subSearchText");
   if (searchTerm.length < 3) {
     console.log("Need more characters in mainSearch bar");
-  } else {
+  } else if (searchTerm.length >= 3) {
     console.log("Search button clicked with search term:", searchTerm);
     const searchResults = mainSearchRecipes(searchTerm, recipes);
-    console.log("Search results:", searchResults);
-    displayRecipes(searchResults);
-    previousTagCheck(searchResults);
-    initializeDropdowns(searchResults);
-    setupDropdownHandlers(searchResults);
-    return searchResults
+
+    if (searchResults.length === 0) {
+      displayNoRecipe.innerText = errorMessage;
+
+      console.log(errorMessage);
+    } else {
+      if (displayNoRecipe){
+      displayNoRecipe.innerText = '';
+      }
+      displayRecipes(searchResults);
+      previousTagCheck(searchResults);
+      initializeDropdowns(searchResults);
+      setupDropdownHandlers(searchResults);
+      errorHandler.classList.remove("error");
+    }
+    return searchResults;
   }
-  return recipes
+  return recipes;
 }
 
 // Call this function when the DOM is fully loaded

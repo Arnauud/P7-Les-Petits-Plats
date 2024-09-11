@@ -38,11 +38,10 @@
     margin: 0;
     list-style-type: none;
 }
-/* 
-.dropdown-menu, .show li {
-    display: block;
-    padding: 8px 16px;
-} */
+  .dropdown-menu.show::-webkit-scrollbar {
+    width: 0px;  /* This hides the scrollbar */
+    height: 0px;  /* For horizontal scrollbar */
+  }
 
 /************** Arrow Up and Arrow Down manipulation- ********************/
 
@@ -74,7 +73,7 @@
 .search, .fa-magnifying-glass {
   position: absolute;
     top: 13px;
-    right: 8px;
+    right: 20px;
     color: grey;
     z-index: 1;
   }
@@ -101,7 +100,6 @@
 /* Default styles */
 
 .remove-tag-button {
-  /* margin-left: 10px; */
   padding: 5px 10px;
   cursor: pointer;
   background-color: transparent;
@@ -151,9 +149,10 @@ button:hover .remove-tag-button {
   border: transparent;
   color: grey;
   position: relative;
-  bottom: 45px;
+  bottom: 8px;
   left: 128px;
 }
+
 .selected-tags-container{
   display: flex;
   gap: 20px;

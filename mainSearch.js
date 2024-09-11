@@ -1,4 +1,4 @@
-import { recipes } from "./assets/data/recipes.js";
+// import { recipes } from "./assets/data/recipes.js";
 import { initializeDropdowns } from "./Filter/dropDown.js";
 import { displayRecipes } from "./RecipeCard/displayRecipe.js";
 import { previousTagCheck, setupDropdownHandlers } from "./main.js"
@@ -84,7 +84,7 @@ import { previousTagCheck, setupDropdownHandlers } from "./main.js"
 
 
 export function mainSearchRecipes(query, recipes) {
-    console.log('searchRecipes called with:', { query, recipes });
+  console.log('searchRecipes called with:', { query, recipes });
 
     // Ensure the query is a string
     query = query.toLowerCase();
@@ -111,8 +111,9 @@ export function mainSearchRecipes(query, recipes) {
 }
 
 
-
-// // lancer la fonction filterRecipes avec parametre (tableau de tags + Recipes){}
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////// FILTER RECIPES //////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 export function filterRecipes(mainRecipe) {
     var selectedTags = Array.from(
       document.querySelectorAll(".selected-tag-item")

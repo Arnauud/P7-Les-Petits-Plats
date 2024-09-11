@@ -29,61 +29,52 @@ function formatItems(items) {
 // Function to createDropdownItems
 ////////////////////////////////////////////////////////////
 export function createDropdownItems(items, dropdownMenu, recipes) {
-    console.log(dropdownMenu)
+    console.log(dropdownMenu);
 
     const searchField = dropdownMenu.querySelector('.dropdown-search');
-    // console.log(`Search field found: ${searchField !== null}`);
-    
     const searchFieldWrapper = searchField ? searchField.parentElement : null;
-    // console.log(`Search field wrapper found: ${searchFieldWrapper !== null}`);
 
+    // Clear the current dropdown menu content
     dropdownMenu.innerHTML = "";
-    // console.log('Cleared dropdown menu.');
 
+    // Re-append the search field wrapper (input and clear button)
     if (searchFieldWrapper) {
         dropdownMenu.appendChild(searchFieldWrapper);
-        // console.log('Appended search field wrapper to dropdown menu.');
+        console.log('Appended search field wrapper to dropdown menu.');
     }
 
     console.log('Processing items...');
     const lowercasedItems = toLowerCaseItems(items);
-    // console.log(`Lowercased items: ${lowercasedItems}`);
-
     const filteredItems = removePluralOrXEnding(lowercasedItems);
-    // console.log(`Filtered items (removed plurals or 'x' endings): ${filteredItems}`);
-
     const uniqueItems = removeDuplicates(filteredItems);
-    // console.log(`Unique items: ${uniqueItems}`);
-
     const sortedItems = sortItemsAlphabetically(uniqueItems);
-    // console.log(`Sorted items alphabetically: ${sortedItems}`);
-
     const formattedItems = formatItems(sortedItems);
-    console.log(`THIS IS ANOTHER BEEEEEP`, formattedItems);
+
     var selectedTags = document.querySelectorAll(".selected-tag-item");
 
     formattedItems.forEach(item => {
-        var check = false
+        var check = false;
         selectedTags.forEach(tag => {
-            console.log(item,tag.textContent)
-            if(item === tag.textContent){
-                check = true
+            if (item === tag.textContent) {
+                check = true;
             }
-        })
+        });
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.classList.add("dropdown-item");
         a.textContent = item;
         li.appendChild(a);
-        if (check === false){
+        if (check === false) {
             dropdownMenu.appendChild(li);
         }
     });
 
+    // Handle the dropdown search input and clear button logic
     if (searchField) {
         searchField.focus();
+        console.log('Focused on search field.');
 
-        // Get all the dropdown search inputs
+        // Get all dropdown search inputs
         const dropdownSearchInputs = document.querySelectorAll('.dropdown-search');
     
         // Attach an event listener to each input
@@ -92,8 +83,9 @@ export function createDropdownItems(items, dropdownMenu, recipes) {
                 const filter = this.value.toLowerCase();
                 const dropdownMenu = this.closest('.dropdown-menu');
                 const listItems = dropdownMenu.querySelectorAll('li');
-    
-                // Loop through all list items, and hide those who don't match the search query
+                const clearButton = this.nextElementSibling; // Select the clear button
+
+                // Loop through all list items and hide those who don't match the search query
                 listItems.forEach(item => {
                     const text = item.textContent || item.innerText;
                     if (text.toLowerCase().includes(filter)) {
@@ -102,33 +94,27 @@ export function createDropdownItems(items, dropdownMenu, recipes) {
                         item.style.display = 'none';
                     }
                 });
-    
-                // Add or remove 'show' class from clearButton based on input value
-                const clearButton = document.getElementById('clearButton');
+
+                // Show or hide the clear button based on input value
                 if (this.value.length > 0) {
                     clearButton.classList.add('show');
                 } else {
                     clearButton.classList.remove('show');
                 }
             });
-        });
-        
-        // Handle clear button click event
-        const clearButton = document.getElementById('clearButton');
-        clearButton.addEventListener('click', function() {
-            if (searchField) {
-                searchField.value = ''; // Clear the input field
-                searchField.dispatchEvent(new Event('input')); // Trigger input event to update the dropdown
-            }
-            clearButton.classList.remove('show'); // Hide the clear button
-        });
 
-        console.log('Focused on search field.');
+            // Handle clear button click event
+            const clearButton = input.nextElementSibling; // Get the corresponding clear button for this input
+            clearButton.addEventListener('click', function () {
+                input.value = ''; // Clear the input field
+                input.dispatchEvent(new Event('input')); // Trigger input event to update the dropdown
+                clearButton.classList.remove('show'); // Hide the clear button
+            });
+        });
     }
 
     console.log('Dropdown items created.');
 }
-
 
 
 
