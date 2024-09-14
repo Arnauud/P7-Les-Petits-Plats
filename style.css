@@ -83,10 +83,10 @@ html {
   color:white;
 }
 
-.search-bar i {
+.search-bar .fa-magnifying-glass {
   position: relative;
   left: 439px;
-  top: -33%;
+  top: -35%;
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
@@ -95,14 +95,42 @@ html {
   border-radius: 10px;
   opacity: 1;
   width: 51px;
-  height: 52px;
+  height: 51px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.search-bar i:hover {
+.search-bar .fa-magnifying-glass:hover {
   background: #ffd15b;
   color: white;
 }
 
+/* .clearButtonMainSearch .fa-solid .fa-x{
+    background: none;
+    color: grey;
+    display: flex;
+    width: 37px;
+    height: 9px;
+    border-radius: unset;
+    padding: 0;
+    position: relative;
+    bottom: 102px;
+    left: 381px;
+    background: none;
+} */
+
+.search-bar .fa-solid.fa-x{
+  position: absolute;
+  right: 325px;
+  bottom: 638px;
+  cursor: pointer;
+  color: grey;
+  transition: all 100ms ease-out;
+  background: none;
+  width: 13px;
+  height: 13px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}

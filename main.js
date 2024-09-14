@@ -17,6 +17,13 @@ document.getElementById("research").addEventListener("input", () => {
 });
 
 
+document.getElementsByClassName("clearButtonMainSearch")[0].addEventListener("click", () => {
+    const searchTerm = document.getElementById("research");
+    searchTerm.value = ''; 
+    mainLaunch();
+    document.querySelector(".fa-solid.fa-x").style.display="none";
+  });
+
 
 // Define the function to set up dropdown handlers
 export function setupDropdownHandlers() {
@@ -94,33 +101,49 @@ export function previousTagCheck() {
 
 
 
+
 function mainLaunch() {
   console.log("MAINLAUCH");
   const searchTerm = document.getElementById("research").value;
   const errorMessage = `Aucune recette ne contient "${searchTerm}". Vous pouvez chercher «tarte aux pommes», «poisson», etc.`;
-  const errorHandler = document.querySelector(".search-bar");
   const displayNoRecipe = document.querySelector(".subSearchText");
-  if (searchTerm.length < 3) {
-    console.log("Need more characters in mainSearch bar");
-  } else if (searchTerm.length >= 3) {
-    console.log("Search button clicked with search term:", searchTerm);
+  const clearbutton = document.querySelector(".fa-solid.fa-x")
+
+  if (searchTerm.length <= 1){
+    clearbutton.style.display = 'flex'
+  } else if (searchTerm.length === ''){
+    clearbutton.style.display = 'none'
+  }
+
+  if (searchTerm.length >= 3) {
+    console.log("Search is looking for this searchTerm:", searchTerm);
     const searchResults = mainSearchRecipes(searchTerm, recipes);
 
     if (searchResults.length === 0) {
       displayNoRecipe.innerText = errorMessage;
+      clearbutton.style.display = 'flex'
+      
 
-      console.log(errorMessage);
     } else {
       if (displayNoRecipe){
       displayNoRecipe.innerText = '';
+
       }
+      
       displayRecipes(searchResults);
       previousTagCheck(searchResults);
       initializeDropdowns(searchResults);
       setupDropdownHandlers(searchResults);
-      errorHandler.classList.remove("error");
+
     }
     return searchResults;
+  } else if (searchTerm.length === 0) {
+    displayNoRecipe.innerText = '';
+    
+    displayRecipes(recipes)
+    previousTagCheck(recipes);
+    initializeDropdowns(recipes);
+    setupDropdownHandlers(recipes);
   }
   return recipes;
 }
