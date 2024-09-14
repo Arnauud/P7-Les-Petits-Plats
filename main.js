@@ -109,10 +109,10 @@ function mainLaunch() {
   const displayNoRecipe = document.querySelector(".subSearchText");
   const clearbutton = document.querySelector(".fa-solid.fa-x")
 
-  if (searchTerm.length <= 1){
-    clearbutton.style.display = 'flex'
-  } else if (searchTerm.length === ''){
-    clearbutton.style.display = 'none'
+  if (searchTerm.length > 0) {
+    clearbutton.style.display = 'flex';
+  } else {
+    clearbutton.style.display = 'none';  // Hide clear button when searchTerm is empty
   }
 
   if (searchTerm.length >= 3) {
@@ -127,6 +127,7 @@ function mainLaunch() {
     } else {
       if (displayNoRecipe){
       displayNoRecipe.innerText = '';
+      // clearbutton.style.display = 'none'
 
       }
       

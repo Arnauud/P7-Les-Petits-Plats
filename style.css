@@ -57,7 +57,7 @@ html {
   color: #ffd15b;
   width: 890px;
   font-family: Anton; /* Need to add this font */
-  font-size: 44px;
+  font-size: 43px;
   font-weight: 400;
 }
 
@@ -86,7 +86,7 @@ html {
 .search-bar .fa-magnifying-glass {
   position: relative;
   left: 439px;
-  top: -35%;
+  top: -47px;
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
@@ -121,9 +121,9 @@ html {
 } */
 
 .search-bar .fa-solid.fa-x{
-  position: absolute;
-  right: 325px;
-  bottom: 638px;
+  position: relative;
+  left: 385px;
+  bottom: 105px;
   cursor: pointer;
   color: grey;
   transition: all 100ms ease-out;
