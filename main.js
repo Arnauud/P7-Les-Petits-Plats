@@ -86,14 +86,13 @@ function tagHandler(tag) {
 }
 // chercher si des tags sont deja selectionnés ! DONE !
 export function previousTagCheck() {
-  var selectedTags = document.querySelectorAll(".selected-tag-item"); // Assuming each tag has the class 'tag'
-  var tagCount = selectedTags.length; // Count the number of tags
+  var selectedTags = document.querySelectorAll(".selected-tag-item");
+  var tagCount = selectedTags.length; 
   console.log("Number of active selected tags:", tagCount);
   console.log(selectedTags);
   if (tagCount > 0) {
     console.log("Previously selected tags:", selectedTags);
     return selectedTags;
-    // To do: function to update the displayed recipes with the active tags
   } else {
     console.log("There are no tags to select from");
   }

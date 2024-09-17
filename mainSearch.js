@@ -5,6 +5,10 @@ import { initializeDropdowns } from "./Filter/dropDown.js";
 import { displayRecipes } from "./RecipeCard/displayRecipe.js";
 import { previousTagCheck, setupDropdownHandlers } from "./main.js"
 
+////////////////////////////////////
+///////// ARRAY FUNCTION ///////////
+////////////////////////////////////
+
 export function mainSearchRecipes(query, recipes) {
   console.log('searchRecipes called with:', { query, recipes });
 

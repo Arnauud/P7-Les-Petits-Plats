@@ -13,7 +13,7 @@ html {
 .background-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -40,7 +40,7 @@ html {
   justify-content: center;
   color: white;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.5); /* Optional dark overlay */
+  background: rgba(0, 0, 0, 0.5); 
 }
 
 .logo {
@@ -56,7 +56,7 @@ html {
   margin: 0 20px;
   color: #ffd15b;
   width: 890px;
-  font-family: Anton; /* Need to add this font */
+  font-family: Anton; 
   font-size: 43px;
   font-weight: 400;
 }
@@ -105,20 +105,6 @@ html {
   background: #ffd15b;
   color: white;
 }
-
-/* .clearButtonMainSearch .fa-solid .fa-x{
-    background: none;
-    color: grey;
-    display: flex;
-    width: 37px;
-    height: 9px;
-    border-radius: unset;
-    padding: 0;
-    position: relative;
-    bottom: 102px;
-    left: 381px;
-    background: none;
-} */
 
 .search-bar .fa-solid.fa-x{
   position: relative;

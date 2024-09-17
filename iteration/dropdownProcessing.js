@@ -28,7 +28,7 @@ function formatItems(items) {
 ////////////////////////////////////////////////////////////
 // Function to createDropdownItems
 ////////////////////////////////////////////////////////////
-export function createDropdownItems(items, dropdownMenu, recipes) {
+export function createDropdownItems(items, dropdownMenu) {
     console.log(dropdownMenu);
 
     const searchField = dropdownMenu.querySelector('.dropdown-search');
@@ -143,11 +143,3 @@ export function extractUniqueItems(recipes) {
         allUtensils: removeDuplicates(allUtensils)
     };
 }
-
-////////////////////////////////////////////////////////////
-// Function to Update Dropdown Menu list
-////////////////////////////////////////////////////////////
-
-function updateDropdown (){
-
-}; 
