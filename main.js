@@ -121,6 +121,9 @@ function mainLaunch() {
     if (searchResults.length === 0) {
       displayNoRecipe.innerText = errorMessage;
       clearbutton.style.display = 'flex'
+      displayRecipes(searchResults);
+      const recipeCounter = document.querySelector('.recipeCounter')
+      recipeCounter.textContent = `0 RECETTE`;
       
 
     } else {
